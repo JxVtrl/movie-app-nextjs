@@ -6,7 +6,7 @@ import styles from "./home.module.scss";
 const HomeIndex: React.FC = () => {
   const { movies }: any = useApp();
   return (
-    <main>
+    <main className={styles.homeMain}>
       <div className={styles.cardsContainer}>
         {movies?.map((movie: any) => (
           <div key={movie.id} className={styles.movieCard}>
