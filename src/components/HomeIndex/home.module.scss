@@ -1,0 +1,41 @@
+.cardsContainer {
+    display: grid;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1440px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (min-width: 1600px) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.movieCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+    }
+}

@@ -1,3 +1,5 @@
 import HomeIndex from "./HomeIndex";
+import Nav from "./Nav";
 
-export default HomeIndex;
+export { HomeIndex, Nav };
+
