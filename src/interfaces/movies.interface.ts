@@ -15,9 +15,25 @@ export interface Movie {
   vote_count: number;
 }
 
+export interface MovieGenre {
+  id: number;
+  name: string;
+}
 
-export interface MoviesCollection {
+
+export interface MoviesRes {
   results: Movie[];
   total_results: number;
   total_pages: number;
+}
+
+export interface MovieGenreRes {
+  genres: MovieGenre[];
+}
+
+export interface MoviesGenreSearchReq {
+  results: Movie[];
+  total_results: number;
+  total_pages: number;
+  page: number;
 }
