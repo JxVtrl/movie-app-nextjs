@@ -8,6 +8,7 @@ export interface Movie {
   overview: string;
   popularity: number;
   poster_path: string;
+  poster: string;
   release_date: string;
   title: string;
   video: boolean;
@@ -20,6 +21,11 @@ export interface MovieGenre {
   name: string;
 }
 
+export interface MoviesByGender {
+  gender_id: number;
+  gender_name: string;
+  movies: Movie[];
+}
 
 export interface MoviesRes {
   results: Movie[];

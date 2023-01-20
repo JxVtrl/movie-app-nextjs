@@ -21,7 +21,6 @@ export function AppProvider({ children }: any) {
 
   const [allMovies, setAllMovies] = useState<Movie[]>([]);
   const [allGenres, setAllGenres] = useState<MovieGenre[]>([]);
-  const [genreSearched, setGenreSearched] = useState<Movie[]>([]);
 
   useEffect(() => {
     allMoviesReq(page, language).then((res: MoviesRes) => {
@@ -33,12 +32,6 @@ export function AppProvider({ children }: any) {
     moviesAllGenresReq(language).then((res: MovieGenreRes) => {
       setAllGenres(res.genres);
     });
-
-    // moviesGenreSearchReq(1, language, "28").then(
-    //   (res: MoviesGenreSearchReq) => {
-    //     setGenreSearched(res.results);
-    //   }
-    // );
   }, []);
 
   const value = {
@@ -48,6 +41,7 @@ export function AppProvider({ children }: any) {
     totalPages,
     setLanguage,
     setPage,
+    language,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

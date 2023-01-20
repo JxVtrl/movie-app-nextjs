@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useApp } from "src/context/AppContext";
 import { useRouter } from "next/router";
 import { movieReq } from "src/helpers/movieSearchReq";
 import { Movie } from "@/interfaces/movies.interface";
