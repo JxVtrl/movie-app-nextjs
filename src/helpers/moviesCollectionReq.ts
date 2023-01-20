@@ -1,4 +1,4 @@
-export const moviesReq = async (
+export const allMoviesReq = async (
   page: number,
   language: string
 ): Promise<any> => {
