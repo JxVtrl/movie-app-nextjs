@@ -1,29 +1,49 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { moviesReq } from "@/helpers/moviesCollectionReq";
-import { Movie, MoviesCollection } from "@/interfaces/movies.interface";
+import { allMoviesReq } from "@/helpers/moviesCollectionReq";
+import {
+  Movie,
+  MovieGenre,
+  MovieGenreRes,
+  MoviesGenreSearchReq,
+  MoviesRes,
+} from "@/interfaces/movies.interface";
+import {
+  moviesGenreSearchReq,
+  moviesAllGenresReq,
+} from "@/helpers/moviesGenresReq";
 const AppContext = createContext({});
 
 export function AppProvider({ children }: any) {
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [totalResults, setTotalResults] = useState<number>(0);
-  const [language, setLanguage] = useState<string>("en-US");
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [language, setLanguage] = useState<string>("pt-BR");
+
+  const [allMovies, setAllMovies] = useState<Movie[]>([]);
+  const [allGenres, setAllGenres] = useState<MovieGenre[]>([]);
+  const [genreSearched, setGenreSearched] = useState<Movie[]>([]);
 
   useEffect(() => {
-    moviesReq(page, language).then((res: MoviesCollection) => {
-      setMovies(res.results);
+    allMoviesReq(page, language).then((res: MoviesRes) => {
+      setAllMovies(res.results);
       setTotalPages(res.total_pages);
-      setTotalResults(res.total_results)
+      setTotalResults(res.total_results);
     });
+
+    moviesAllGenresReq(language).then((res: MovieGenreRes) => {
+      setAllGenres(res.genres);
+    });
+
+    // moviesGenreSearchReq(1, language, "28").then(
+    //   (res: MoviesGenreSearchReq) => {
+    //     setGenreSearched(res.results);
+    //   }
+    // );
   }, []);
 
-  useEffect(() => {
-    console.log(movies)
-  },[movies])
-
   const value = {
-    movies,
+    allMovies,
+    allGenres,
     totalResults,
     totalPages,
     setLanguage,
