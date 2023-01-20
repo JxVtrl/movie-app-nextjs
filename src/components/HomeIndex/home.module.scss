@@ -1,12 +1,15 @@
 .homeMain {
     margin-top: 20px;
+    width: 100%;
+    overflow: auto;
+    padding: 0 20px;
+
 }
 
 .cardsContainer {
     display: grid;
     max-width: 1600px;
-    padding: 0 20px;
-    margin: 0 auto;
+    width: 100%;
     grid-gap: 20px;
     grid-template-columns: repeat(1, 1fr);
 
